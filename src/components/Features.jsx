@@ -146,7 +146,7 @@
 import React from 'react';
 
 const Features = () => {
-  // Feature data array for easy modification
+  // Updated feature data array with your new CRM capabilities
   const features = [
     {
       icon: (
@@ -154,54 +154,53 @@ const Features = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      title: "360° Customer View",
-      description: "Get a complete picture of your customers with unified data across all touchpoints and interactions."
+      title: "All-in-One Management",
+      description: "Manage clients, tasks, employees, and leads through one seamless solution to stay organized and in-charge."
     },
     {
       icon: (
         <svg className="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
         </svg>
       ),
-      title: "Smart Scheduling",
-      description: "Never miss an opportunity with automated follow-ups, tasks, and meeting scheduling."
+      title: "Custom Role-Based Dashboards",
+      description: "Dedicated dashboards for HR, managers, BDAs, and other roles with tailored views for maximum productivity."
     },
     {
       icon: (
         <svg className="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
       ),
-      title: "AI-Powered Insights",
-      description: "Leverage AI to predict customer needs, identify opportunities, and optimize your sales strategy."
+      title: "Top-Tier Security",
+      description: "Enterprise-grade security keeping your sensitive business data protected and compliant at all times."
     },
     {
       icon: (
         <svg className="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
       ),
-      title: "Marketing Automation",
-      description: "Create personalized marketing campaigns that nurture leads and drive conversions automatically."
+      title: "SaaS-Based Architecture",
+      description: "Cloud-based solution with no installation required, accessible from anywhere with internet connection."
     },
     {
       icon: (
         <svg className="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
-      title: "Advanced Reporting",
-      description: "Generate insightful reports and visualizations to measure performance and identify growth opportunities."
+      title: "Permission-Based Access",
+      description: "Granular access control based on user roles, ensuring employees only see what they need to see."
     },
     {
       icon: (
         <svg className="w-7 h-7 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
         </svg>
       ),
-      title: "Workflow Automation",
-      description: "Streamline processes with customizable workflows that trigger actions based on specific conditions."
+      title: "Scalable Infrastructure",
+      description: "Grow your business without outgrowing your CRM - our solution scales alongside your organization's needs."
     }
   ];
 
@@ -209,9 +208,9 @@ const Features = () => {
     <section id="features" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-indigo-900">Features Designed for Growth</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-indigo-900">Features Designed for Organization</h2>
           <p className="mt-4 text-xl text-indigo-700 max-w-3xl mx-auto">
-            Our comprehensive suite of tools helps you build lasting customer relationships
+            One seamless solution to stay organized and in-charge of your entire business
           </p>
         </div>
         
@@ -229,7 +228,7 @@ const Features = () => {
         
         <div className="mt-16 text-center">
           <button className="bg-teal-400 text-indigo-900 px-8 py-3 rounded-lg shadow-lg hover:bg-teal-500 transition-colors font-medium">
-            Discover All Features
+            Explore CRM Solutions
           </button>
         </div>
       </div>

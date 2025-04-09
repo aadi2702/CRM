@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FAQ = () => {
+const FAQ = () => { 
   // FAQ data array for easy modification
   const faqItems = [
     {
@@ -38,56 +38,68 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="faq" className="py-24 bg-[#FBFBFB]">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-indigo-900">Frequently Asked Questions</h2>
-          <p className="mt-4 text-xl text-indigo-700 max-w-3xl mx-auto">
-            Find answers to common questions about our CRM platform
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+            Frequently Asked <span className="text-teal-500">Questions</span>
+          </h2>
+          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+            Find answers to common questions about how RequinOps can transform your customer relationship management
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          {faqItems.map((item, index) => (
-            <div 
-              key={index} 
-              className="mb-4 border border-indigo-100 rounded-xl overflow-hidden bg-indigo-50 hover:shadow-md transition-all"
-            >
-              <button
-                className="flex justify-between items-center w-full p-6 text-left focus:outline-none"
-                onClick={() => toggleFAQ(index)}
-              >
-                <h3 className="text-lg font-semibold text-indigo-900">{item.question}</h3>
-                <svg 
-                  className={`w-5 h-5 text-indigo-700 transform transition-transform ${openIndex === index ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+        <div className="max-w-3xl mx-auto relative">
+          {/* Decorative elements */}
+          <div className="absolute -top-10 -left-16 w-40 h-40 bg-teal-100 rounded-full opacity-50 blur-2xl hidden md:block"></div>
+          <div className="absolute -bottom-10 -right-16 w-40 h-40 bg-[#E8F9FF] rounded-full opacity-50 blur-2xl hidden md:block"></div>
+          
+          {/* FAQ Items */}
+          <div className="relative z-10">
+            {faqItems.map((item, index) => (
               <div 
-                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'}`}
+                key={index} 
+                className="mb-5 bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300"
               >
-                <div className="p-6 pt-0 text-indigo-700">
-                  {item.answer}
+                <button
+                  className="flex justify-between items-center w-full p-6 text-left focus:outline-none"
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={openIndex === index}
+                >
+                  <h3 className="text-lg font-semibold text-slate-800">{item.question}</h3>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border border-slate-200 transition-all duration-300 ${openIndex === index ? 'bg-teal-500 border-teal-500' : 'bg-white'}`}>
+                    <svg 
+                      className={`w-4 h-4 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180 text-white' : 'text-slate-600'}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="p-6 pt-0 text-slate-600 border-t border-slate-100">
+                    {item.answer}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         
-        <div className="mt-12 text-center">
-          <p className="text-indigo-700 mb-4">Still have questions?</p>
+        <div className="mt-16 text-center relative z-10">
+          <p className="text-slate-600 mb-6 text-lg">Still have questions? We're here to help.</p>
           <a 
             href="#contact" 
-            className="inline-flex items-center bg-teal-400 text-indigo-900 px-6 py-3 rounded-lg shadow-md hover:bg-teal-500 transition-colors font-medium"
+            className="inline-flex items-center bg-slate-800 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-slate-700 transition-colors font-medium"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
-            Contact Us
+            Contact Our Team
           </a>
         </div>
       </div>

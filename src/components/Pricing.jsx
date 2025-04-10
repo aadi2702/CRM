@@ -147,11 +147,13 @@ const Pricing = () => {
               </div>
               
               <div className="px-8 pb-8">
+              <a href="#contact">
                 <button 
                   className={`w-full py-4 rounded-lg shadow-lg transition-colors font-medium ${plan.ctaColor}`}
                 >
                   {plan.ctaText}
                 </button>
+              </a>
               </div>
             </div>
           ))}
@@ -166,20 +168,22 @@ const Pricing = () => {
                 Let our experts design a custom plan for your organization's specific needs
               </p>
             </div>
+            <a href="https://wa.me/%2B918690406079">
             <button className="bg-teal-500 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-teal-600 transition-colors font-medium inline-flex items-center whitespace-nowrap">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
               Schedule a Consultation
             </button>
+            </a>
           </div>
         </div>
         
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <p className="text-slate-600">
             All plans include a <span className="font-medium">14-day free trial</span>. No credit card required.
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

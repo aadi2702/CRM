@@ -8,28 +8,28 @@ const Testimonials = () => {
       author: "Sarah Johnson",
       position: "VP of Sales, TechCorp Inc.",
       rating: 5,
-      avatar: "/api/placeholder/64/64"
+      avatar: "https://i.ibb.co/4wH4YJWy/Sarah-Johnson.jpg"
     },
     {
       quote: "The automation features saved us countless hours every week. We've seen a 45% increase in customer engagement since implementation.",
       author: "Michael Chen",
       position: "Customer Success Manager, GrowthWave",
       rating: 5,
-      avatar: "/api/placeholder/64/64"
+      avatar: "https://i.ibb.co/s99WGjVq/Michael-Chen.jpg"
     },
     {
       quote: "Intuitive interface with powerful analytics. Our team was able to identify new opportunities that we were previously missing.",
       author: "Jessica Rodriguez",
       position: "Director of Marketing, Elevate Solutions",
       rating: 4,
-      avatar: "/api/placeholder/64/64"
+      avatar: "https://i.ibb.co/DfP4pQhz/Jessica-Rodriguez.jpg"
     },
     {
       quote: "The onboarding process was smooth and the support team answered all our questions. Impressed with how quickly we were able to customize it for our needs.",
       author: "David Wilson",
       position: "Operations Lead, Nexus Enterprises",
       rating: 5,
-      avatar: "/api/placeholder/64/64"
+      avatar: "https://i.ibb.co/SwQWgQb5/davidd.jpg"
     },
   ];
 
@@ -80,7 +80,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-[#FBFBFB]">
+    <section id="testimonials" className="py-8 bg-[#FBFBFB]">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -213,7 +213,7 @@ const Testimonials = () => {
         </div> */}
         
         {/* CTA */}
-        <div className="mt-20 bg-white rounded-xl p-10 shadow-sm border border-slate-100 text-center">
+        {/* <div className="mt-20 bg-white rounded-xl p-10 shadow-sm border border-slate-100 text-center">
           <h3 className="text-2xl font-bold text-slate-800 mb-4">Join thousands of satisfied customers</h3>
           <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
             Experience how RequinOps can transform your customer relationships and boost your business growth
@@ -221,7 +221,7 @@ const Testimonials = () => {
           <button className="bg-teal-500 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-teal-600 transition-colors font-medium">
             Start Free Trial Today
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -118,7 +118,7 @@
 // import React, { useState, useEffect } from "react";
 
 // const Navbar = () => {
-//   const [isScrolled, setIsScrolled] = useState(false); 
+//   const [isScrolled, setIsScrolled] = useState(false);
 
 //   // Navbar scroll effect
 //   useEffect(() => {
@@ -236,11 +236,10 @@
 
 // export default Navbar;
 
-
 import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false); 
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Navbar scroll effect
   useEffect(() => {
@@ -265,9 +264,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <span
-              className="ml-3 font-bold text-xl text-slate-700"
-            >
+            <span className="ml-3 font-bold text-xl text-slate-700">
               RequinOps
             </span>
           </div>
@@ -294,14 +291,14 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button
-              className="hidden md:block px-4 py-2 rounded-md text-slate-600 border border-slate-300 hover:bg-teal-400 hover:text-white hover:border-teal-400 transition-all"
-            >
+            {/* <button className="hidden md:block px-4 py-2 rounded-md text-slate-600 border border-slate-300 hover:bg-teal-400 hover:text-white hover:border-teal-400 transition-all">
               Login
-            </button>
-            <button className="bg-teal-500 text-white px-6 py-2 rounded-md shadow hover:bg-teal-600 transition-colors font-medium">
-              Get Started
-            </button>
+            </button> */}
+            <a href="#contact">
+              <button className="bg-teal-500 text-white px-6 py-2 rounded-md shadow hover:bg-teal-600 transition-colors font-medium">
+                Get Started
+              </button>
+            </a>
           </div>
 
           <button className="md:hidden text-slate-700">

@@ -38,7 +38,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-24 bg-[#FBFBFB]">
+    <section id="faq" className="py-8 bg-[#FBFBFB]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
@@ -90,7 +90,7 @@ const FAQ = () => {
           </div>
         </div>
         
-        <div className="mt-16 text-center relative z-10">
+        {/* <div className="mt-16 text-center relative z-10">
           <p className="text-slate-600 mb-6 text-lg">Still have questions? We're here to help.</p>
           <a 
             href="#contact" 
@@ -101,7 +101,7 @@ const FAQ = () => {
             </svg>
             Contact Our Team
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -74,7 +74,7 @@ const HeroSection = () => {
                 className="relative z-10 rounded-xl shadow-xl w-full border border-slate-200"
               />
             </div>
-          </div>
+          </div>  
         </div>
       </div>
 

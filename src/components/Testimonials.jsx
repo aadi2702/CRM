@@ -1,230 +1,278 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { ArrowLeft, ArrowRight, Quote, Star } from "lucide-react";
 
-const Testimonials = () => {
-  // Testimonials data array
+export default function Testimonials() {
   const testimonials = [
     {
-      quote: "This CRM platform transformed how we interact with customers. Our sales team can now focus on relationships instead of paperwork.",
-      author: "Sarah Johnson",
-      position: "VP of Sales, TechCorp Inc.",
+      quote:
+        "Hospital X reduced patient wait times by 30% using this system. The dashboard analytics provided real-time insights that helped us identify bottlenecks and streamline our patient flow.",
+      name: "Dr. John Doe",
+      role: "Chief Medical Officer, Hospital X",
+      image: "https://i.ibb.co/nMnG0NRN/john-doe.jpg",
       rating: 5,
-      avatar: "https://i.ibb.co/4wH4YJWy/Sarah-Johnson.jpg"
+      hospital: "Metropolitan Medical Center",
     },
     {
-      quote: "The automation features saved us countless hours every week. We've seen a 45% increase in customer engagement since implementation.",
-      author: "Michael Chen",
-      position: "Customer Success Manager, GrowthWave",
+      quote:
+        "The AI insights have transformed our decision-making process. We've been able to predict patient admission rates with remarkable accuracy, allowing us to optimize staffing and resources.",
+      name: "Jane Smith",
+      role: "Hospital Administrator, Clinic Y",
+      image: "https://i.ibb.co/gFJ22G4N/jane-smith.jpg",
       rating: 5,
-      avatar: "https://i.ibb.co/s99WGjVq/Michael-Chen.jpg"
+      hospital: "Westside Health Clinic",
     },
     {
-      quote: "Intuitive interface with powerful analytics. Our team was able to identify new opportunities that we were previously missing.",
-      author: "Jessica Rodriguez",
-      position: "Director of Marketing, Elevate Solutions",
-      rating: 4,
-      avatar: "https://i.ibb.co/DfP4pQhz/Jessica-Rodriguez.jpg"
+      quote:
+        "Seamless integration with our existing EHR system was a game-changer. The implementation team was responsive and ensured a smooth transition with minimal disruption to our daily operations.",
+      name: "Michael Johnson",
+      role: "IT Director, Medical Center Z",
+      image: "https://i.ibb.co/s99WGjVq/Michael-Chen.jpg",
+      rating: 5,
+      hospital: "Community Health Network",
     },
     {
-      quote: "The onboarding process was smooth and the support team answered all our questions. Impressed with how quickly we were able to customize it for our needs.",
-      author: "David Wilson",
-      position: "Operations Lead, Nexus Enterprises",
+      quote:
+        "The blood bank management module has revolutionized how we track and manage our inventory. We've reduced waste by 25% while ensuring critical supplies are always available when needed.",
+      name: "Dr. Sarah Williams",
+      role: "Hematology Department Head",
+      image: "https://i.ibb.co/4wH4YJWy/Sarah-Johnson.jpg",
       rating: 5,
-      avatar: "https://i.ibb.co/SwQWgQb5/davidd.jpg"
+      hospital: "University Medical Center",
+    },
+    {
+      quote:
+        "HealthToHeart's appointment management has dramatically decreased our no-show rates. The automated reminders and easy rescheduling options have improved both patient satisfaction and clinic efficiency.",
+      name: "Robert Chen",
+      role: "Operations Manager",
+      image: "https://i.ibb.co/HTVzQHXj/Robert-Chen.jpg",
+      rating: 5,
+      hospital: "Eastern Regional Hospital",
+    },
+    {
+      quote:
+        "The reporting capabilities have given our board unprecedented visibility into hospital performance. We can now make data-driven decisions that improve both patient outcomes and our financial health.",
+      name: "Dr. Emily Rodriguez",
+      role: "Hospital Director",
+      image: "https://i.ibb.co/DfP4pQhz/Jessica-Rodriguez.jpg",
+      rating: 5,
+      hospital: "Pacific Northwest Healthcare",
     },
   ];
 
-  // State for current testimonial index
-  const [currentIndex, setCurrentIndex] = useState(0);
-  
-  // Auto-slide functionality
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const slidesToShow = 3;
+  const totalSlides = testimonials.length;
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000); // Change slide every 5 seconds
-    
+      if (!isPaused) {
+        setActiveSlide(
+          (prev) => (prev + 1) % (totalSlides - (slidesToShow - 1))
+        );
+      }
+    }, 5000);
+
     return () => clearInterval(interval);
-  }, [testimonials.length]);
-  
-  // Function to navigate to a specific slide
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-  
-  // Function to go to the next slide
+  }, [isPaused, totalSlides]);
+
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-  
-  // Function to go to the previous slide
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+    setActiveSlide((prev) => Math.min(prev + 1, totalSlides - slidesToShow));
   };
 
-  // Function to render stars based on rating
+  const prevSlide = () => {
+    setActiveSlide((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
+
   const renderStars = (rating) => {
-    return (
-      <div className="flex text-amber-400">
-        {[...Array(5)].map((_, i) => (
-          <svg 
-            key={i} 
-            className="w-4 h-4" 
-            fill={i < rating ? "currentColor" : "none"} 
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-          </svg>
-        ))}
-      </div>
-    );
+    return Array(5)
+      .fill(0)
+      .map((_, i) => (
+        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+      ));
   };
 
   return (
-    <section id="testimonials" className="py-8 bg-[#FBFBFB]">
-      <div className="container mx-auto px-4 md:px-6">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">What Our <span className="text-teal-500">Customers</span> Say</h2>
-          <p className="text-lg text-slate-600">
-            Don't just take our word for it — hear from businesses like yours
+    <section
+      id="testimonials"
+      className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-teal-50"
+    >
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-1/4 -mt-20 hidden lg:block">
+        <div className="h-40 w-40 rounded-full bg-teal-100 opacity-30"></div>
+      </div>
+      <div className="absolute bottom-0 right-1/4 hidden lg:block">
+        <div className="h-64 w-64 rounded-full bg-teal-100 opacity-40"></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-teal-50 text-teal-700 mb-5">
+            <span className="flex h-2 w-2 rounded-full bg-teal-500 mr-2"></span>
+            Client Success Stories
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+            What Our <span className="text-teal-600">Clients Say</span>
+          </h2>
+          <p className="mt-4 text-xl text-gray-500">
+            See how healthcare providers across the country are transforming
+            patient care with our system
           </p>
         </div>
-        
-        {/* Featured Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-20">
-          {testimonials.slice(0, 2).map((testimonial, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all relative overflow-hidden"
+
+        {/* Large quote icon */}
+        <div className="absolute top-40 left-0 transform -translate-x-1/2">
+          <Quote className="h-32 w-32 text-teal-100" />
+        </div>
+
+        {/* Testimonial slider */}
+        <div className="relative">
+          <div
+            className="overflow-hidden"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${
+                  activeSlide * (100 / slidesToShow)
+                }%)`,
+              }}
             >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-teal-50 rounded-full opacity-80 -mr-10 -mt-10"></div>
-              
-              <div className="relative z-10">
-                <svg className="w-8 h-8 text-teal-500 mb-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                
-                <p className="text-lg text-slate-700 italic mb-8">"{testimonial.quote}"</p>
-                
-                <div className="flex items-center">
-                  <img 
-                    src={testimonial.avatar} 
-                    alt={testimonial.author} 
-                    className="w-12 h-12 rounded-full border-2 border-teal-100"
-                  />
-                  <div className="ml-4">
-                    <h4 className="font-semibold text-slate-800">{testimonial.author}</h4>
-                    <p className="text-slate-600 text-sm">{testimonial.position}</p>
-                    <div className="mt-1">
-                      {renderStars(testimonial.rating)}
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="w-full md:w-1/3 flex-shrink-0 px-4">
+                  <div className="bg-white rounded-2xl shadow-lg p-8 h-full border border-gray-100 hover:shadow-xl transition-all duration-300 hover:border-teal-100">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex">
+                        {renderStars(testimonial.rating)}
+                      </div>
+                      <Quote className="h-6 w-6 text-teal-400" />
+                    </div>
+
+                    <p className="text-gray-700 mb-8 italic leading-relaxed">
+                      "{testimonial.quote}"
+                    </p>
+
+                    <div className="flex items-center">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="h-12 w-12 rounded-full object-cover border-2 border-teal-100"
+                      />
+                      <div className="ml-4">
+                        <p className="font-semibold text-gray-900">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {testimonial.role}
+                        </p>
+                        <p className="text-xs text-teal-600 mt-1">
+                          {testimonial.hospital}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        
-        {/* Main Testimonial Carousel */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Left Navigation Arrow */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 z-10 bg-white p-2 rounded-full shadow-md hover:bg-slate-50 transition-colors"
-            aria-label="Previous testimonial"
-          >
-            <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          
-          {/* Testimonial Card */}
-          <div className="bg-gradient-to-r from-slate-800 to-slate-700 p-10 md:p-12 rounded-xl shadow-lg overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-teal-400 rounded-full opacity-10 -mr-20 -mt-20"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-teal-400 rounded-full opacity-10 -ml-20 -mb-20"></div>
-            
-            <div className="relative z-10 flex flex-col md:flex-row items-center">
-              <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                <img 
-                  src={testimonials[currentIndex].avatar} 
-                  alt={testimonials[currentIndex].author} 
-                  className="w-24 h-24 rounded-full border-4 border-slate-600 shadow-lg"
+          </div>
+
+          {/* Navigation controls */}
+          <div className="flex justify-center mt-10 space-x-4">
+            <button
+              onClick={prevSlide}
+              disabled={activeSlide === 0}
+              className={`p-3 rounded-full shadow-md ${
+                activeSlide === 0
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-white text-teal-600 hover:bg-teal-50"
+              } transition-colors`}
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextSlide}
+              disabled={activeSlide >= totalSlides - slidesToShow}
+              className={`p-3 rounded-full shadow-md ${
+                activeSlide >= totalSlides - slidesToShow
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-white text-teal-600 hover:bg-teal-50"
+              } transition-colors`}
+            >
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Indicator dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {Array.from({ length: totalSlides - (slidesToShow - 1) }).map(
+              (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveSlide(index)}
+                  className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                    activeSlide === index ? "bg-teal-500 w-6" : "bg-teal-200"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
-              </div>
-              
-              <div className="md:w-2/3 md:pl-8">
-                <svg className="w-10 h-10 text-teal-400 mb-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                
-                <p className="text-xl md:text-2xl text-white italic mb-8">
-                  "{testimonials[currentIndex].quote}"
+              )
+            )}
+          </div>
+        </div>
+
+        {/* CTA card */}
+        <div className="mt-24 bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl shadow-xl overflow-hidden">
+          <div className="px-8 py-12 md:px-12 md:py-16">
+            <div className="md:grid md:grid-cols-2 md:gap-12 items-center">
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  Ready to Join Our Success Stories?
+                </h3>
+                <p className="text-teal-100 mb-8">
+                  Experience the same transformative results that healthcare
+                  providers across the country are achieving with our hospital
+                  management system.
                 </p>
-                
-                <div>
-                  <h4 className="font-bold text-white text-lg">{testimonials[currentIndex].author}</h4>
-                  <p className="text-slate-300">{testimonials[currentIndex].position}</p>
-                  <div className="mt-2">
-                    {renderStars(testimonials[currentIndex].rating)}
+                <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-teal-700 bg-white hover:bg-gray-50 shadow-md transition-colors"
+                  >
+                    Request a Demo
+                  </a>
+                  {/* <a href="#" className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-lg text-white hover:bg-teal-500 transition-colors">
+                    Contact Sales
+                  </a> */}
+                </div>
+              </div>
+              <div className="mt-10 md:mt-0 text-center">
+                <div className="inline-block bg-white/10 backdrop-blur-sm rounded-2xl p-4">
+                  <div className="flex items-center justify-center space-x-2">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="flex items-center">
+                        <Star className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                      </div>
+                    ))}
                   </div>
+                  <p className="text-white font-medium mt-3 text-lg">
+                    Rated 4.9/5 from over 500 reviews
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          
-          {/* Right Navigation Arrow */}
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 z-10 bg-white p-2 rounded-full shadow-md hover:bg-slate-50 transition-colors"
-            aria-label="Next testimonial"
-          >
-            <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-          
-          {/* Indicator Dots */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-teal-500 w-8' : 'bg-slate-300 w-2'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
-        
-        {/* Additional Social Proof */}
-        {/* <div className="mt-24">
-          <h3 className="text-xl font-semibold text-slate-800 text-center mb-10">Trusted by innovative companies worldwide</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
-            {[1, 2, 3, 4, 5].map((num) => (
-              <div key={num} className="bg-white h-24 rounded-lg shadow-sm border border-slate-100 flex items-center justify-center p-6 filter grayscale hover:grayscale-0 hover:shadow-md transition-all">
-                <div className="w-full h-full bg-slate-50 rounded flex items-center justify-center">
-                  <span className="text-slate-400 font-medium">Logo {num}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div> */}
-        
-        {/* CTA */}
-        {/* <div className="mt-20 bg-white rounded-xl p-10 shadow-sm border border-slate-100 text-center">
-          <h3 className="text-2xl font-bold text-slate-800 mb-4">Join thousands of satisfied customers</h3>
-          <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-            Experience how RequinOps can transform your customer relationships and boost your business growth
-          </p>
-          <button className="bg-teal-500 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-teal-600 transition-colors font-medium">
-            Start Free Trial Today
-          </button>
-        </div> */}
       </div>
     </section>
   );
-};
-
-export default Testimonials;
+}

@@ -78,7 +78,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 
-
 const App = () => {
   return (
     <div>
@@ -91,7 +90,6 @@ const App = () => {
       <FAQ />
       <Contact />
       <Footer />
-  
       
     </div>
   )

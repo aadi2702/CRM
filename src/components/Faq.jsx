@@ -1,141 +1,110 @@
-import React, { useState, useRef } from "react";
-import {
-  ChevronDown,
-  ChevronUp,
-  MessageSquare,
-  HelpCircle,
-} from "lucide-react";
+import React, { useState } from 'react';
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0);
-  const contentRefs = useRef([]);
-
-  const faqs = [
+const FAQ = () => { 
+  // FAQ data array for easy modification
+  const faqItems = [
     {
-      question: "How long does implementation typically take?",
-      answer:
-        "Implementation timelines vary based on your facility size and specific requirements. Small clinics can be up and running in as little as 2-4 weeks, while larger hospitals typically take 4-8 weeks. Our implementation specialists work closely with your team to create a custom migration plan that minimizes disruption to your operations.",
+      question: "How long does it take to get started with the CRM?",
+      answer: "Our onboarding process is designed to be fast and efficient. Most customers can set up their account, import contacts, and start using core features within 24 hours. Our Professional and Enterprise plans include personalized onboarding assistance to ensure a smooth transition."
     },
     {
-      question: "What kind of support do you offer after implementation?",
-      answer:
-        "We provide 24/7 technical support through multiple channels including phone, email, and live chat. All plans include comprehensive onboarding training for your staff. Pro and Enterprise plans also include a dedicated account manager who conducts quarterly reviews to ensure you are getting maximum value from the system.",
+      question: "Can I migrate data from my existing CRM?",
+      answer: "Yes! We provide easy migration tools for popular CRM platforms. Our system supports importing data from CSV files, Salesforce, HubSpot, Zoho, and many other solutions. Enterprise customers receive dedicated migration support from our technical team."
     },
     {
-      question: "Is the system compliant with healthcare regulations?",
-      answer:
-        "Yes, our Hospital Management System is fully compliant with HIPAA, GDPR, HL7, and other regional healthcare regulations. We maintain SOC 2 Type II certification and undergo regular security audits. Our compliance team stays current with regulatory changes to ensure your system remains compliant as requirements evolve.",
+      question: "Is there a limit to how many contacts I can store?",
+      answer: "The Starter plan includes up to 5,000 contacts, Professional supports up to 50,000 contacts, and Enterprise has unlimited contacts. If you need a custom solution for your specific needs, please contact our sales team."
     },
     {
-      question:
-        "Can your system integrate with our existing EHR and other software?",
-      answer:
-        "Absolutely. We support seamless integrations with major EHR systems like Epic, Cerner, AllScripts, and Meditech. Our open API architecture also allows for custom integrations with laboratory systems, billing software, pharmacy management systems, and other healthcare applications your facility may use.",
+      question: "Do you offer integrations with other business tools?",
+      answer: "Absolutely! Our CRM integrates seamlessly with popular business tools including Gmail, Outlook, Slack, Zoom, Microsoft Teams, QuickBooks, Zapier, and many more. Professional and Enterprise plans also support custom API integrations."
     },
     {
-      question: "How customizable is your Hospital Management System?",
-      answer:
-        "Our HMS is highly customizable to accommodate your specific workflows. You can configure dashboards, reports, user roles, department structures, and more. Enterprise customers receive access to our professional services team for advanced customizations and development of specialized modules tailored to your unique requirements.",
+      question: "Is my data secure with your platform?",
+      answer: "Security is our top priority. We employ industry-leading encryption standards, regular security audits, and comprehensive data protection measures. Our platform is GDPR compliant and SOC 2 certified. Enterprise plans include additional security features like SSO and custom data retention policies."
     },
     {
-      question: "What happens to our existing data during migration?",
-      answer:
-        "We take data migration very seriously. Our process includes thorough data mapping, validation, and testing before the final migration. We preserve your historical records while ensuring data integrity and security. After migration, we run parallel systems temporarily to ensure everything transitions smoothly with no data loss.",
-    },
-    {
-      question: "How secure is your Hospital Management System?",
-      answer:
-        "Security is our top priority. We implement bank-level encryption for data at rest and in transit, role-based access controls, multi-factor authentication, and detailed audit logs of all system activities. Our infrastructure features redundant backups, disaster recovery protocols, and regular penetration testing to identify and address potential vulnerabilities.",
-    },
-    {
-      question: "Do you offer flexible pricing options for different budgets?",
-      answer:
-        "Yes, we understand healthcare organizations have varying budgets and needs. Beyond our standard pricing tiers, we offer flexible payment options including monthly or annual billing. Non-profit healthcare providers and rural hospitals may qualify for special pricing programs. Contact our sales team for a personalized quote.",
-    },
+      question: "What kind of support do you offer?",
+      answer: "Starter plans include email support during business hours. Professional plans include 24/7 email and chat support with priority response times. Enterprise customers receive VIP support with a dedicated account manager and phone support options. All customers have access to our extensive knowledge base and video tutorials."
+    }
   ];
 
+  // State to track which FAQ is open
+  const [openIndex, setOpenIndex] = useState(null);
+
+  // Toggle function for opening/closing FAQs
   const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? -1 : index);
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="faq" className="relative py-32 bg-gradient-to-b from-white to-teal-50/30 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-teal-50/80 to-transparent"></div>
-      <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-tl from-teal-50/80 to-transparent"></div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-24 right-12 hidden lg:block">
-        <div className="h-24 w-24 rounded-full bg-teal-100/50 blur-xl"></div>
-      </div>
-      <div className="absolute bottom-24 left-12 hidden lg:block">
-        <div className="h-32 w-32 rounded-full bg-teal-100/50 blur-xl"></div>
-      </div>
-      <div className="absolute top-1/2 left-1/4 hidden lg:block">
-        <div className="h-16 w-16 rounded-full bg-teal-200/30 blur-md"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header with improved styling */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-teal-50 text-teal-700 shadow-sm mb-6 border border-teal-100">
-            <span className="flex h-2 w-2 rounded-full bg-teal-500 mr-2 animate-pulse"></span>
-            Got Questions?
-          </div>
-          <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl tracking-tight">
-            Frequently Asked <span className="text-teal-600 relative">Questions
-              <span className="absolute -bottom-3 left-0 w-full h-1 bg-teal-500/30 rounded-full"></span>
-            </span>
+    <section id="faq" className="py-8 bg-[#FBFBFB]">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+            Frequently Asked <span className="text-teal-500">Questions</span>
           </h2>
-          <p className="mt-8 text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Find answers to common questions about our Hospital Management
-            System. If you don't see what you're looking for, our team is just a
-            click away.
+          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+            Find answers to common questions about how RequinOps can transform your customer relationship management
           </p>
         </div>
-
-        {/* Enhanced FAQ accordion */}
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden backdrop-blur-sm">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`border-b border-gray-100 ${
-                index === faqs.length - 1 ? "border-b-0" : ""
-              } ${openIndex === index ? "bg-teal-50/30" : "hover:bg-gray-50/80"} transition-all duration-300`}
-            >
-              <button
-                className="w-full flex items-center justify-between px-8 py-6 text-left focus:outline-none group transition-all"
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={openIndex === index}
-                aria-controls={`faq-answer-${index}`}
+        
+        <div className="max-w-3xl mx-auto relative">
+          {/* Decorative elements */}
+          <div className="absolute -top-10 -left-16 w-40 h-40 bg-teal-100 rounded-full opacity-50 blur-2xl hidden md:block"></div>
+          <div className="absolute -bottom-10 -right-16 w-40 h-40 bg-[#E8F9FF] rounded-full opacity-50 blur-2xl hidden md:block"></div>
+          
+          {/* FAQ Items */}
+          <div className="relative z-10">
+            {faqItems.map((item, index) => (
+              <div 
+                key={index} 
+                className="mb-5 bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300"
               >
-                <span className="text-lg font-semibold text-gray-900 group-hover:text-teal-600 transition-colors flex items-start">
-                  <span className="text-teal-500 mr-4 mt-1 opacity-80">
-                    <MessageSquare className="h-5 w-5" />
-                  </span>
-                  {faq.question}
-                </span>
-                <span className={`ml-6 flex-shrink-0 p-2 rounded-full ${openIndex === index ? "bg-teal-500 text-white" : "text-teal-500 bg-teal-50"} transition-all duration-300 transform ${openIndex === index ? "rotate-180" : "rotate-0"}`}>
-                  <ChevronDown className="h-5 w-5" />
-                </span>
-              </button>
-              <div
-                id={`faq-answer-${index}`}
-                ref={el => contentRefs.current[index] = el}
-                className={`px-8 overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? "max-h-96 pb-8 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="pl-9 border-l-2 border-teal-200">
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <button
+                  className="flex justify-between items-center w-full p-6 text-left focus:outline-none"
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={openIndex === index}
+                >
+                  <h3 className="text-lg font-semibold text-slate-800">{item.question}</h3>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border border-slate-200 transition-all duration-300 ${openIndex === index ? 'bg-teal-500 border-teal-500' : 'bg-white'}`}>
+                    <svg 
+                      className={`w-4 h-4 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180 text-white' : 'text-slate-600'}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="p-6 pt-0 text-slate-600 border-t border-slate-100">
+                    {item.answer}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
         
+        {/* <div className="mt-16 text-center relative z-10">
+          <p className="text-slate-600 mb-6 text-lg">Still have questions? We're here to help.</p>
+          <a 
+            href="#contact" 
+            className="inline-flex items-center bg-slate-800 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-slate-700 transition-colors font-medium"
+          >
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            Contact Our Team
+          </a>
+        </div> */}
       </div>
     </section>
   );
-}
+};
+
+export default FAQ;

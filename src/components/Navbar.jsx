@@ -1,13 +1,250 @@
-import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+// import React from 'react';
+// import { FaInfoCircle, FaShoppingCart } from 'react-icons/fa';
 
-export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+// const Navbar = () => {
+//   return (
+//     <nav className="w-full px-8 py-4 flex items-center justify-between bg-white shadow">
+//       {/* Left: Logo */}
+//       <div className="flex items-center space-x-2">
+//         <img src="/logo.png" alt="Logo" className="h-8 w-8" />
+//         <h1 className="text-2xl font-bold text-[#0C1E3A]">
+//           Requin Solutions
+//         </h1>
+//       </div>
+
+//       {/* Center: Nav links */}
+//       <ul className="hidden md:flex space-x-8 font-medium text-[#0C1E3A]">
+//         <li className="hover:text-orange-500 cursor-pointer">Home</li>
+//         <li className="hover:text-orange-500 cursor-pointer">Demos</li>
+//         <li className="hover:text-orange-500 cursor-pointer">Modules</li>
+//         <li className="hover:text-orange-500 cursor-pointer">Features</li>
+//         <li className="hover:text-orange-500 cursor-pointer">Pricing</li>
+//       </ul>
+
+//       {/* Right: Buttons */}
+//       <div className="flex space-x-3">
+//         <button className="flex items-center gap-2 bg-[#0A0A23] text-white px-4 py-2 rounded-md text-sm hover:opacity-90">
+//           <FaInfoCircle size={14} />
+//           Change Log
+//         </button>
+//         <button className="flex items-center gap-2 bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-md text-sm hover:opacity-90">
+//           <FaShoppingCart size={14} />
+//           Buy Template
+//         </button>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// import React from 'react';
+
+// const Navbar = () => {
+//   return (
+//     <nav className="bg-primary text-white p-4 fixed top-0 w-full z-10 shadow-md">
+//       <div className="container mx-auto flex justify-between items-center">
+//         <img src="logo.png" alt="CRM Logo" className="h-10" />
+//         <ul className="flex space-x-6">
+//           <li><a href="#home" className="hover:text-accent">Home</a></li>
+//           <li><a href="#features" className="hover:text-accent">Features</a></li>
+//           <li><a href="#pricing" className="hover:text-accent">Pricing</a></li>
+//           <li><a href="#contact" className="hover:text-accent">Contact</a></li>
+//           <li><a href="#login" className="hover:text-accent">Login</a></li>
+//           <li><a href="#signup" className="bg-accent px-4 py-2 rounded hover:bg-green-700">Sign Up</a></li>
+//         </ul>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// import React, { useState, useEffect } from 'react';
+
+// const Navbar = () => {
+//   const [isScrolled, setIsScrolled] = useState(false);
+
+//   // Navbar scroll effect
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (window.scrollY > 50) {
+//         setIsScrolled(true);
+//       } else {
+//         setIsScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   return (
+//     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-900 py-3 shadow-lg' : 'bg-transparent py-6'}`}>
+//       <div className="container mx-auto px-4 md:px-6">
+//         <div className="flex justify-between items-center">
+//           <div className="flex items-center">
+//             <svg className="w-10 h-10 text-coral-500" viewBox="0 0 24 24" fill="currentColor">
+//               <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+//             </svg>
+//             <span className={`ml-3 font-bold text-xl ${isScrolled ? 'text-white' : 'text-slate-900'}`}>NexusCRM</span>
+//           </div>
+
+//           <div className="hidden md:flex space-x-8">
+//             <a href="#features" className={`${isScrolled ? 'text-slate-200' : 'text-slate-800'} hover:text-coral-500 transition-colors`}>Features</a>
+//             <a href="#solutions" className={`${isScrolled ? 'text-slate-200' : 'text-slate-800'} hover:text-coral-500 transition-colors`}>Solutions</a>
+//             <a href="#pricing" className={`${isScrolled ? 'text-slate-200' : 'text-slate-800'} hover:text-coral-500 transition-colors`}>Pricing</a>
+//             <a href="#testimonials" className={`${isScrolled ? 'text-slate-200' : 'text-slate-800'} hover:text-coral-500 transition-colors`}>Testimonials</a>
+//           </div>
+
+//           <div className="flex items-center space-x-4">
+//             <button className={`hidden md:block px-4 py-2 rounded-md ${isScrolled ? 'text-white border border-white' : 'text-slate-900 border border-slate-900'} hover:bg-coral-500 hover:text-white hover:border-coral-500 transition-all`}>Login</button>
+//             <button className="bg-coral-500 text-black px-6 py-2 rounded-md shadow-lg hover:bg-coral-600 transition-colors">Get Started</button>
+//           </div>
+
+//           <button className="md:hidden text-slate-900">
+//             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+//             </svg>
+//           </button>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// import React, { useState, useEffect } from "react";
+
+// const Navbar = () => {
+//   const [isScrolled, setIsScrolled] = useState(false);
+
+//   // Navbar scroll effect
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       if (window.scrollY > 50) {
+//         setIsScrolled(true);
+//       } else {
+//         setIsScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   return (
+//     <nav
+//       className={`fixed w-full z-50 transition-all duration-300 ${
+//         isScrolled ? "bg-indigo-900 py-3 shadow-lg" : "bg-transparent py-6"
+//       }`}
+//     >
+//       <div className="container mx-auto px-4 md:px-6">
+//         <div className="flex justify-between items-center">
+//           <div className="flex items-center">
+//             {/* <svg className="w-10 h-10 text-teal-400" viewBox="0 0 24 24" fill="currentColor">
+//               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+//             </svg> */}
+//             {/* <a href="/" className="flex items-center gap-2">
+//               <img
+//                 src="https://i.ibb.co/hRzkkDJV/Logo-white.png"
+//                 // src="https://i.ibb.co/b5G6QhwM/Logo-white-big.png"
+//                 alt="Logo"
+//                 className="w-auto h-17"
+//               />
+//             </a> */}
+//             <span
+//               className={`ml-3 font-bold text-xl ${
+//                 isScrolled ? "text-white" : "text-indigo-900"
+//               }`}
+//             >
+//               RequinOps
+//             </span>
+//           </div>
+
+//           <div className="hidden md:flex space-x-8">
+//             <a
+//               href="#features"
+//               className={`${
+//                 isScrolled ? "text-indigo-100" : "text-indigo-800"
+//               } hover:text-teal-400 transition-colors`}
+//             >
+//               Features
+//             </a>
+//             {/* <a
+//               href="#solutions"
+//               className={`${
+//                 isScrolled ? "text-indigo-100" : "text-indigo-800"
+//               } hover:text-teal-400 transition-colors`}
+//             >
+//               Solutions
+//             </a> */}
+//             <a
+//               href="#pricing"
+//               className={`${
+//                 isScrolled ? "text-indigo-100" : "text-indigo-800"
+//               } hover:text-teal-400 transition-colors`}
+//             >
+//               Pricing
+//             </a>
+//             <a
+//               href="#testimonials"
+//               className={`${
+//                 isScrolled ? "text-indigo-100" : "text-indigo-800"
+//               } hover:text-teal-400 transition-colors`}
+//             >
+//               Testimonials
+//             </a>
+//           </div>
+
+//           <div className="flex items-center space-x-4">
+//             <button
+//               className={`hidden md:block px-4 py-2 rounded-md ${
+//                 isScrolled
+//                   ? "text-white border border-white"
+//                   : "text-indigo-900 border border-indigo-900"
+//               } hover:bg-teal-400 hover:text-indigo-900 hover:border-teal-400 transition-all`}
+//             >
+//               Login
+//             </button>
+//             <button className="bg-teal-400 text-indigo-900 px-6 py-2 rounded-md shadow-lg hover:bg-teal-500 transition-colors font-medium">
+//               Get Started
+//             </button>
+//           </div>
+
+//           <button className="md:hidden text-indigo-900">
+//             <svg
+//               className="w-6 h-6"
+//               fill="none"
+//               stroke="currentColor"
+//               viewBox="0 0 24 24"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 strokeWidth="2"
+//                 d="M4 6h16M4 12h16M4 18h16"
+//               />
+//             </svg>
+//           </button>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+import React, { useState, useEffect } from "react";
+
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Navbar scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -21,129 +258,68 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-lg py-3"
-          : "bg-white/80 backdrop-blur-sm py-5"
+        isScrolled ? "bg-[#FBFBFB] py-3 shadow-sm" : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="flex items-center">
-                <div className="h-10 w-10 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-xl">H</span>
-                </div>
-                <span className="ml-3 text-gray-800 font-bold text-xl">
-                  HealthTo<span className="text-teal-600">Heart</span>
-                </span>
-              </div>
-            </div>
+            <span className="ml-3 font-bold text-xl text-slate-700">
+              RequinOps
+            </span>
           </div>
 
-          <div className="hidden md:flex items-center space-x-10">
-            <a
-              href="#"
-              className="text-gray-800 hover:text-teal-600 font-medium transition-colors relative group"
-            >
-              Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </a>
+          <div className="hidden md:flex space-x-8">
             <a
               href="#features"
-              className="text-gray-800 hover:text-teal-600 font-medium transition-colors relative group"
+              className="text-slate-600 hover:text-teal-500 transition-colors"
             >
               Features
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
               href="#pricing"
-              className="text-gray-800 hover:text-teal-600 font-medium transition-colors relative group"
+              className="text-slate-600 hover:text-teal-500 transition-colors"
             >
               Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
               href="#testimonials"
-              className="text-gray-800 hover:text-teal-600 font-medium transition-colors relative group"
+              className="text-slate-600 hover:text-teal-500 transition-colors"
             >
               Testimonials
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-            {/* <a href="#" className="px-5 py-2 font-medium text-teal-600 hover:text-teal-700 transition-colors">
-              Log in
-            </a> */}
-            <a
-              href="#contact"
-              className="px-5 py-2 font-medium text-white bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg hover:from-teal-600 hover:to-teal-700 transition-colors shadow-md hover:shadow-lg"
-            >
-              Get Started
+          <div className="flex items-center space-x-4">
+            {/* <button className="hidden md:block px-4 py-2 rounded-md text-slate-600 border border-slate-300 hover:bg-teal-400 hover:text-white hover:border-teal-400 transition-all">
+              Login
+            </button> */}
+            <a href="#contact">
+              <button className="bg-teal-500 text-white px-6 py-2 rounded-md shadow hover:bg-teal-600 transition-colors font-medium">
+                Get Started
+              </button>
             </a>
           </div>
 
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-teal-600 hover:bg-teal-50"
+          <button className="md:hidden text-slate-700">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t">
-          <div className="px-4 py-3 space-y-2">
-            <a
-              href="#"
-              className="block px-4 py-2 text-base font-medium text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-base font-medium text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg"
-            >
-              Features
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-base font-medium text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg"
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-base font-medium text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg"
-            >
-              About
-            </a>
-            <div className="pt-2 space-y-2">
-              <a
-                href="#"
-                className="block w-full px-4 py-2 text-center font-medium text-teal-600 hover:text-teal-700 transition-colors"
-              >
-                Log in
-              </a>
-              <a
-                href="#"
-                className="block w-full px-4 py-2 text-center font-medium text-white bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg hover:from-teal-600 hover:to-teal-700 transition-colors shadow-md"
-              >
-                Get Started
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </nav>
   );
-}
+};
+
+export default Navbar;

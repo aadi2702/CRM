@@ -19,6 +19,12 @@ const Pricing = () => {
         "Email integration",
         "Mobile app access",
         "8/5 email support",
+        "Up to 5 team members",
+        "Contact management",
+        "Basic lead tracking",
+        "Email integration",
+        "Mobile app access",
+        "8/5 email support",
       ],
       ctaText: "Start Free Trial",
       ctaColor:
@@ -40,7 +46,17 @@ const Pricing = () => {
         "Advanced reporting",
         "Workflow automation",
         "24/7 priority support",
+        "Up to 25 team members",
+        "All Starter features",
+        "Marketing automation",
+        "AI-powered insights",
+        "Custom dashboards",
+        "Advanced reporting",
+        "Workflow automation",
+        "24/7 priority support",
       ],
+      ctaText: "Get Started",
+      ctaColor: "bg-slate-800 text-white hover:bg-slate-700",
       ctaText: "Get Started",
       ctaColor: "bg-slate-800 text-white hover:bg-slate-700",
       popular: true,
@@ -65,6 +81,19 @@ const Pricing = () => {
       ctaColor:
         "border border-slate-200 bg-white text-slate-800 hover:bg-slate-50",
       popular: false,
+        "Unlimited team members",
+        "All Professional features",
+        "Dedicated account manager",
+        "Custom API integrations",
+        "Advanced security controls",
+        "White-labeling options",
+        "Multi-language support",
+        "24/7 VIP support",
+      ],
+      ctaText: "Contact Sales",
+      ctaColor:
+        "border border-slate-200 bg-white text-slate-800 hover:bg-slate-50",
+      popular: false,
     },
   ];
 
@@ -74,11 +103,20 @@ const Pricing = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
             Simple, Transparent <span className="text-teal-500">Pricing</span>
+    <section id="pricing" className="py-24 bg-[#FBFBFB]">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+            Simple, Transparent <span className="text-teal-500">Pricing</span>
           </h2>
           <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
             Choose the perfect plan that scales with your business needs. Save
             up to 20% with annual billing.
+          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+            Choose the perfect plan that scales with your business needs. Save
+            up to 20% with annual billing.
           </p>
+
 
           {/* Billing toggle */}
           <div className="mt-8 inline-flex items-center bg-slate-100 p-1.5 rounded-lg">
@@ -110,9 +148,42 @@ const Pricing = () => {
               <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">
                 Save up to 20% with annual billing
               </span>
+          <div className="mt-8 inline-flex items-center bg-slate-100 p-1.5 rounded-lg">
+            <button
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                isAnnual
+                  ? "bg-white text-slate-800 shadow-sm"
+                  : "text-slate-600"
+              }`}
+              onClick={() => setIsAnnual(true)}
+            >
+              Annual Billing
+            </button>
+            <button
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+                !isAnnual
+                  ? "bg-white text-slate-800 shadow-sm"
+                  : "text-slate-600"
+              }`}
+              onClick={() => setIsAnnual(false)}
+            >
+              Monthly Billing
+            </button>
+          </div>
+
+          {/* Discount badge */}
+          {isAnnual && (
+            <div className="mt-4">
+              <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">
+                Save up to 20% with annual billing
+              </span>
             </div>
           )}
+          )}
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {pricingPlans.map((plan, index) => (
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {pricingPlans.map((plan, index) => (
@@ -173,6 +244,9 @@ const Pricing = () => {
                     {plan.ctaText}
                   </button>
                 </a>
+                    {plan.ctaText}
+                  </button>
+                </a>
               </div>
             </div>
           ))}
@@ -181,10 +255,19 @@ const Pricing = () => {
         <div className="mt-20 max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-slate-100 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100 rounded-full opacity-20 -mr-20 -mt-20"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+
+        <div className="mt-20 max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-slate-100 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100 rounded-full opacity-20 -mr-20 -mt-20"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h3 className="text-2xl font-bold text-slate-800">
                 Need a custom enterprise solution?
+              <h3 className="text-2xl font-bold text-slate-800">
+                Need a custom enterprise solution?
               </h3>
+              <p className="mt-2 text-slate-600">
+                Let our experts design a custom plan for your organization's
+                specific needs
               <p className="mt-2 text-slate-600">
                 Let our experts design a custom plan for your organization's
                 specific needs
